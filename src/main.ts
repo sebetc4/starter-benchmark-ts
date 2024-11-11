@@ -46,25 +46,13 @@ const implementations = new Map<string, () => number>([
     const arr = generateTestArray(10000);
     return arr.reduce((sum, value) => sum + value, 0);
   }],
-  
-  ['for...in loop (not recommended for arrays)', () => {
-    const arr = generateTestArray(10000);
-    let sum = 0;
-    for (const index in arr) {
-      sum += arr[index];
-    }
-    return sum;
-  }]
 ]);
 
 const options: PartialBenchmarkOptions = {
-  iterations: 100000, 
+  iterations: 1000, 
   warmupIterations: 100,
   samples: 5, 
   name: 'Array iteration'   
 };
-
-
-Benchmark.compare(implementations, options);
 
 Benchmark.compare(implementations, options);
